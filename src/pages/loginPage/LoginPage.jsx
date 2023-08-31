@@ -1,8 +1,20 @@
 import React from "react";
 import styles from "./LoginPage.module.scss";
 import * as FaIcons from "react-icons/fa";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const [input, setInput] = useState({ name: "", email: "" });
+  const navigate = useNavigate();
+
+  const loginHandler = () => {
+    if (input.name && input.email) {
+      localStorage.setItem("userinfo", JSON.stringify(input));
+      navigate("/");
+    }
+  };
+
   return (
     <div className={styles.loginPage}>
       <div className={styles.left}></div>
@@ -18,15 +30,28 @@ const LoginPage = () => {
           </div>
 
           <div className={styles.inputField}>
-            <input className={styles.input} placeholder="enter your name" />
+            <input
+              className={styles.input}
+              placeholder="enter your name"
+              onChange={(e) =>
+                setInput((prev) => ({ ...prev, name: e.target.value }))
+              }
+            />
           </div>
           <div className={styles.inputField}>
-            <input className={styles.input} placeholder="enter your email" />
+            <input
+              className={styles.input}
+              placeholder="enter your email"
+              type="email"
+              onChange={(e) =>
+                setInput((prev) => ({ ...prev, email: e.target.value }))
+              }
+            />
           </div>
 
           <div className={styles.inputField}>
             <div className={styles.formFooter}>
-              <button className={styles.button}>
+              <button className={styles.button} onClick={loginHandler}>
                 {" "}
                 <FaIcons.FaUserCircle className={styles.loginUser} />{" "}
                 <span>Login</span>
@@ -36,9 +61,9 @@ const LoginPage = () => {
         </div>
 
         <div className={styles.footer}>
-            <FaIcons.FaGithub className={styles.socialIcons} />
-            <FaIcons.FaLinkedin className={styles.socialIcons} />
-            <FaIcons.FaTwitter className={styles.socialIcons} />
+          <FaIcons.FaGithub className={styles.socialIcons} />
+          <FaIcons.FaLinkedin className={styles.socialIcons} />
+          <FaIcons.FaTwitter className={styles.socialIcons} />
         </div>
       </div>
     </div>
