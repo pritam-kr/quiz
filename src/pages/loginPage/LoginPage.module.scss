@@ -1,0 +1,71 @@
+@import "../../styles/variable.module.scss";
+
+.loginPage {
+  width: 100%;
+  height: calc(100vh - 0px);
+ 
+  display: grid;
+  grid-template-columns: 60% 40%;
+
+  .left,
+  .right {
+    height: 100%;
+    width: 100%;
+  }
+
+  .left {
+    background: url("https://res.cloudinary.com/dhqxln7zi/image/upload/v1657871428/hannah-olinger-NXiIVnzBwZ8-unsplash_2_t366pq.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .right {
+    padding: 4rem;
+    position: relative;
+
+    .loginForm{
+        margin: 2rem 0;
+
+        .inputField{
+            margin-bottom: 30px;
+            .formTitle{
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+            }
+
+            .formDescription{
+                margin-bottom: 20px;
+            }
+
+            .input {
+                @include input;
+            }
+
+            .formFooter{
+                @include display-flex;
+                justify-content: flex-start;
+                .button {
+                    @include  primary-btn;
+                    @include display-center;
+                    gap: 10px;
+                    width: 200px;
+                }
+            }
+          
+        }
+    }
+
+    .footer{
+      position: absolute;
+       bottom: 50px;
+
+       .socialIcons{
+        @include icons;
+        margin-left: 15px;
+        cursor: pointer;
+        color: $secondar-text;
+       }
+    }
+  }
+}
