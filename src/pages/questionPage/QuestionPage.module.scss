@@ -16,7 +16,7 @@
   .left {
     width: 60%;
     // width: ;
-   
+
     border-right: 1px solid $border-color;
     position: relative;
 
@@ -24,43 +24,33 @@
       .label {
         font-size: 1.4rem;
         font-weight: 500;
+        overflow: hidden;
+        word-wrap: break-word;
+        margin-bottom: 15px;
         span {
           font-weight: 900;
           color: $primary-color;
         }
       }
 
-      .options{
-        margin-top: 15px;
-        label{
-            width: fit-content;
-            display: block;
-            cursor: pointer;
-            margin-bottom: 5px;
-        }
-        input{
-            margin-right: 10px;
-            width: fit-content;
-           
-        }
-      }
+      
     }
 
-    .questionNavigation{
-        @include display-flex;
-        justify-content:space-between;
-        position: absolute;
-        bottom: 100px;
-        width: calc(100% - 24px);
+    .questionNavigation {
+      @include display-flex;
+      justify-content: space-between;
+      position: absolute;
+      bottom: 100px;
+      width: calc(100% - 24px);
 
-        button{
-            @include primary-btn;
-            width: 100px !important;
-        }
+      button {
+        @include primary-btn;
+        width: 100px !important;
+      }
 
-        .btnPrev{
-           @include secondary-btn; 
-        }
+      .btnPrev {
+        @include secondary-btn;
+      }
     }
   }
 
