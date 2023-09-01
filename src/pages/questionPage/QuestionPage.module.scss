@@ -1,6 +1,71 @@
 @import "../../styles/variable.module.scss";
 
-.questionPage{
-    @include page-margin;
-    height: calc(100vh - 115px) ;
+.questionPage {
+  @include page-margin;
+  height: calc(100vh - 115px);
+
+  display: flex;
+  justify-content: space-between;
+
+  .left,
+  .right {
+    // border: 1px solid;
+    padding: 0 10px;
+  }
+
+  .left {
+    width: 60%;
+    // width: ;
+   
+    border-right: 1px solid $border-color;
+    position: relative;
+
+    .currentQuestion {
+      .label {
+        font-size: 1.4rem;
+        font-weight: 500;
+        span {
+          font-weight: 900;
+          color: $primary-color;
+        }
+      }
+
+      .options{
+        margin-top: 15px;
+        label{
+            width: fit-content;
+            display: block;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+        input{
+            margin-right: 10px;
+            width: fit-content;
+           
+        }
+      }
+    }
+
+    .questionNavigation{
+        @include display-flex;
+        justify-content:space-between;
+        position: absolute;
+        bottom: 100px;
+        width: calc(100% - 24px);
+
+        button{
+            @include primary-btn;
+            width: 100px !important;
+        }
+
+        .btnPrev{
+           @include secondary-btn; 
+        }
+    }
+  }
+
+  .right {
+    width: 40%;
+    border-left: 1px solid $border-color;
+  }
 }

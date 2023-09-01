@@ -52,6 +52,17 @@ $secondar-text: #808080f1;
   border-radius: 10px;
 }
 
+@mixin secondary-btn {
+  color:  $primary-color;
+  background-color: transparent;
+  border: 1px solid  $primary-color;
+  padding: 10px 10px;
+  width: 100%;
+  // border: none;
+  outline: none;
+  border-radius: 10px;
+}
+
 @mixin page-margin {
   margin: 15px 0;
 }
