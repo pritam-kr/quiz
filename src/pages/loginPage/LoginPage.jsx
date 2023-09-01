@@ -11,7 +11,7 @@ const LoginPage = () => {
   const loginHandler = () => {
     if (input.name && input.email) {
       localStorage.setItem("userinfo", JSON.stringify(input));
-      navigate("/");
+      navigate("/home");
     }
   };
 

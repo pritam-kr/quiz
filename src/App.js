@@ -7,10 +7,10 @@ function App() {
   const { pathname } = useLocation();
   return (
     <>
-      <PageContainer className={pathname === "/login"}>
-        {pathname !== "/login" && <NavBar />}
+      <PageContainer className={pathname === "/"}>
+        {pathname !== "/" && <NavBar />}
         <Routes>
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/" element={<LoginPage />} />
         </Routes>
       </PageContainer>
     </>
