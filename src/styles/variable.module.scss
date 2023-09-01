@@ -51,3 +51,12 @@ $secondar-text: #808080f1;
   outline: none;
   border-radius: 10px;
 }
+
+@mixin page-margin {
+  margin: 15px 0;
+}
+
+@mixin titles {
+  font-weight: 700;
+  font-size: 1.3rem;
+}

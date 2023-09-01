@@ -1,0 +1,49 @@
+@import "../../styles/variable.module.scss";
+
+.home {
+  @include page-margin;
+
+  .pageHeader {
+    .title {
+      @include titles;
+    }
+  }
+
+  .quizzes {
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    justify-content: center;
+    gap: 10px;
+
+    margin: 15px 0;
+
+    .categoryCard {
+      border: 1px solid $border-color;
+      border-radius: 10px;
+      //   background-color: $white;
+      position: relative;
+      cursor: pointer;
+      .categoryThumbnail {
+        width: 100%;
+        border-radius: 10px;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .quizLabel {
+        position: absolute;
+        bottom: 0;
+        margin: 10px;
+        color: $white;
+        /* From https://css.glass */
+        background: rgba(5, 92, 206, 0.815);
+        border-radius: 5px;
+        padding: 4px 10px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        
+      }
+    }
+  }
+}
