@@ -28,7 +28,7 @@ export const questionReducer = (state = initialState, action) => {
           ...state.questionList,
           data: state.questionList.data.map((item) =>
             item.id === action.payload.questionId
-              ? { ...item, isAttended: [action.payload.selectedOption] }
+              ? { ...item, isAttended: [action.payload.option] }
               : item
           ),
         },

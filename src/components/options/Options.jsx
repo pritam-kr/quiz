@@ -5,25 +5,16 @@ import { ACTIONS } from "../../redux/actions";
 import * as FaIcons from "react-icons/fa";
 
 const Options = ({ option, currentQuestion }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
-
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    console.log("RR")
-    if (selectedOption) {
-        console.log("pp")
-      dispatch({
-        type: ACTIONS.GET_ATTENDED,
-        payload: { questionId: currentQuestion.id, selectedOption },
-      });
-    }
-  }, [selectedOption]);
- 
 
   return (
     <p
-      onClick={() => setSelectedOption(option)}
+      onClick={() => {
+        dispatch({
+          type: ACTIONS.GET_ATTENDED,
+          payload: { questionId: currentQuestion.id, option: option },
+        });
+      }}
       className={styles.options}
       style={
         currentQuestion.isAttended.includes(option)
