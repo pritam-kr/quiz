@@ -1,0 +1,47 @@
+@import "../../styles/variable.module.scss";
+
+.report {
+  @include page-margin;
+  height: calc(100vh - 115px);
+  display: flex;
+  justify-content: space-between;
+  .left,
+  .right {
+    padding: 0 10px;
+    height: 100%;
+  }
+
+  .left {
+    width: 60%;
+    border-right: 1px solid $border-color;
+    position: relative;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .question {
+      background-color: $white;
+      margin-bottom: 10px;
+      padding: 10px 13px;
+      border-radius: 10px;
+
+      .footer{
+        margin-top: 10px;
+
+        p{
+          font-size: .9rem;
+          span{
+            font-weight: 700;
+          }
+        }
+      }
+    }
+  }
+
+  .right {
+    width: 40%;
+    border-left: 1px solid $border-color;
+  }
+}

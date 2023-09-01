@@ -32,8 +32,6 @@
           color: $primary-color;
         }
       }
-
-      
     }
 
     .questionNavigation {
@@ -50,6 +48,10 @@
 
       .btnPrev {
         @include secondary-btn;
+
+        &.btnDisabled {
+          @include disabled-btn;
+        }
       }
     }
   }
