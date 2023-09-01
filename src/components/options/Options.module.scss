@@ -1,0 +1,19 @@
+@import "../../styles/variable.module.scss";
+
+.options {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+
+
+
+  .bullet {
+    color: $secondar-text;
+  }
+   
+}
+
+ 

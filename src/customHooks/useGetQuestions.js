@@ -29,9 +29,15 @@ const useGetQuestions = ({
         dispatch({
           type: ACTIONS.GET_QUESTIONS,
           payload: {
-            data: results?.map((question) => ({
+            data: results?.map((question, i) => ({
+              isAttended: [],
+              isVisited: i + 1 === 1 ? true : false,
+              id: i + 1,
               ...question,
-              options: [question.correct_answer, ...question.incorrect_answers],
+              options: [
+                question.correct_answer,
+                ...question.incorrect_answers,
+              ].sort(() => Math.random() - 0.5),
             })),
             isError: "",
             isLoading: false,
