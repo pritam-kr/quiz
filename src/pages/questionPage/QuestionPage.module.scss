@@ -1,0 +1,6 @@
+@import "../../styles/variable.module.scss";
+
+.questionPage{
+    @include page-margin;
+    height: calc(100vh - 115px) ;
+}

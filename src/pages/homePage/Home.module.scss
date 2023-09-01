@@ -20,6 +20,7 @@
     .categoryCard {
       border: 1px solid $border-color;
       border-radius: 10px;
+      min-height: 250px;
       //   background-color: $white;
       position: relative;
       cursor: pointer;
@@ -37,13 +38,19 @@
         color: $white;
         /* From https://css.glass */
         background: rgba(5, 92, 206, 0.815);
-        border-radius: 5px;
+         border-radius: 2px;
         padding: 4px 10px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
         
       }
+    }
+  }
+
+  .history{
+    .pageHeader {
+      margin-top: 20px;
     }
   }
 }
