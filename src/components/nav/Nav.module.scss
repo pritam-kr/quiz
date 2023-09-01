@@ -27,6 +27,9 @@
   }
 
   .right {
+    @include display-flex;
+    align-items: center;
+    gap: 20px;
     .userInfo {
       @include display-flex;
       align-items: center;

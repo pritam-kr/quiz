@@ -5,6 +5,7 @@ import { useGetQuestions } from "../../customHooks";
 import { useDispatch, useSelector } from "react-redux";
 import { Options, QuestionPanel } from "../../components";
 import { ACTIONS } from "../../redux/actions";
+import { zeroBeforeTen } from "../../utils/zeroBeforeTen";
 
 const QuestionPage = () => {
   const { Id, category } = useParams();
@@ -50,7 +51,7 @@ const QuestionPage = () => {
           <div className={styles.currentQuestion}>
             <h1 className={styles.label}>
               {" "}
-              <span>Q{currentQuestionNumber + 1}.</span>{" "}
+              <span>Q {zeroBeforeTen(currentQuestionNumber + 1)}.</span>{" "}
               {currentQuestion?.question}
             </h1>
 
