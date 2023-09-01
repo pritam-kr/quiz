@@ -12,8 +12,6 @@ const QuestionPanel = ({ questionNumber }) => {
 
   const { pathname } = useLocation();
 
-  console.log(pathname, "footer");
-
   let questionData;
   questionData = data?.length
     ? data
@@ -44,7 +42,7 @@ const QuestionPanel = ({ questionNumber }) => {
                   pathname === "/report" &&
                   item.correct_answer === item.isAttended?.join()
                     ? { backgroundColor: "#0e800e", color: "#fff" }
-                    :  item.isAttended.length > 0
+                    : item.isAttended.length > 0
                     ? { backgroundColor: "#0e72c9", color: "#fff" }
                     : { backgroundColor: "" }
                 }

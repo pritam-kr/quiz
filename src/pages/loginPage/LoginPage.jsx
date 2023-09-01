@@ -7,12 +7,24 @@ import { LoginForm } from "../../components";
 
 const LoginPage = () => {
   const [input, setInput] = useState({ name: "", email: "" });
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const loginHandler = () => {
-    if (input.name && input.email) {
-      localStorage.setItem("userinfo", JSON.stringify(input));
-      navigate("/home");
+    if (input.name.trim() && input.email.trim()) {
+      const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+      if (emailRegex.test(input.email.trim())) {
+        localStorage.setItem("userinfo", JSON.stringify(input));
+        navigate("/home");
+        setError("")
+      } else {
+        setError("Enter a valid email");
+      }
+    } else if (!input.name.trim()) {
+      setError("Name field can't be empty");
+    } else if (!input.email.trim()) {
+      setError("Email field can't be empty");
     }
   };
 
@@ -20,10 +32,13 @@ const LoginPage = () => {
     <div className={styles.loginPage}>
       <div className={styles.left}></div>
       <div className={styles.right}>
+      
         <LoginForm
           input={input}
           setInput={setInput}
           loginHandler={loginHandler}
+          error={error}
+          setError={setError}
         />
         <div className={styles.footer}>
           <FaIcons.FaGithub className={styles.socialIcons} />

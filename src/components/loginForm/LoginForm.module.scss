@@ -2,7 +2,12 @@
 
 .loginForm {
   margin: 2rem 0;
-
+.error{
+  min-height: 20px;
+  margin-bottom: 10px;
+  font-size: .9rem;
+  color: #cc2e2e;
+}
   .inputField {
     margin-bottom: 30px;
     .formTitle {
