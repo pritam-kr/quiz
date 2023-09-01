@@ -1,7 +1,7 @@
 @import "../../styles/variable.module.scss";
 
 .panelWrapper {
-  max-width: 80%;
+  // max-width: 80%;
   border: 1px solid $border-color;
   background-color: $white;
   border-radius: 10px;
@@ -30,6 +30,27 @@
 
         &.isVisited {
           background-color: #fffd8cce;
+        }
+
+        &.isAttended{
+          background-color: $primary-color !important;
+        }
+      }
+    }
+
+    .circleDetails{
+      margin: 15px 0 0 0;
+
+      p{
+        @include display-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: .9rem;
+        color: $secondar-text;
+
+        svg{
+          border: 1px solid $border-color;
+          border-radius: 20px;
         }
       }
     }

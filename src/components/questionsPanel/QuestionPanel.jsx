@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./QuestionsPanel.module.scss";
 import { useSelector } from "react-redux";
 import * as FaIcons from "react-icons/fa";
+import { CIRCLE_INFO } from "./constants";
 
 const QuestionPanel = ({ questionNumber }) => {
   const {
@@ -25,6 +26,11 @@ const QuestionPanel = ({ questionNumber }) => {
           <div className={styles.panelCircle}>
             {data?.map((item, i) => (
               <div
+                style={
+                  item.isAttended.length > 0
+                    ? { backgroundColor: "#0e72c9", color: "#fff" }
+                    : { backgroundColor: "" }
+                }
                 className={`${styles.circle} ${
                   item.isVisited ? styles.isVisited : ""
                 }`}
@@ -32,6 +38,15 @@ const QuestionPanel = ({ questionNumber }) => {
                 {" "}
                 {i + 1}
               </div>
+            ))}
+          </div>
+
+          <div className={styles.circleDetails}>
+            {CIRCLE_INFO?.map((item) => (
+              <p>
+                {" "}
+                <FaIcons.FaCircle style={{color: item.color}} /> {item.type}{" "}
+              </p>
             ))}
           </div>
         </div>

@@ -21,14 +21,18 @@ export const questionReducer = (state = initialState, action) => {
       };
 
     case ACTIONS.GET_ATTENDED:
-      
       return {
         ...state,
         questionList: {
           ...state.questionList,
           data: state.questionList.data.map((item) =>
             item.id === action.payload.questionId
-              ? { ...item, isAttended: [action.payload.option] }
+              ? {
+                  ...item,
+                  isAttended: item.isAttended.includes(action.payload.option)
+                    ? []
+                    : [action.payload.option],
+                }
               : item
           ),
         },

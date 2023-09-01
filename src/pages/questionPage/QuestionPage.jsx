@@ -14,7 +14,7 @@ const QuestionPage = () => {
     questionList: { data, isError, isLoading },
   } = useSelector((state) => state.questionReducer);
   const dispatch = useDispatch();
-console.log(data)
+
   const [currentQuestionNumber, setCurrentQuestionNumber] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(null);
 
