@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./Options.module.scss";
 import { useDispatch } from "react-redux";
 import { ACTIONS } from "../../redux/actions";

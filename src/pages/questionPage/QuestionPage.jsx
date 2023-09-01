@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./QuestionPage.module.scss";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useGetQuestions } from "../../customHooks";
 import { useDispatch, useSelector } from "react-redux";
 import { Options, QuestionPanel } from "../../components";
@@ -14,6 +14,7 @@ const QuestionPage = () => {
     questionList: { data, isError, isLoading },
   } = useSelector((state) => state.questionReducer);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [currentQuestionNumber, setCurrentQuestionNumber] = useState(0);
   const [currentQuestion, setCurrentQuestion] = useState(null);
@@ -35,7 +36,10 @@ const QuestionPage = () => {
     setCurrentQuestionNumber((prev) => prev + 1);
   };
 
-  const submitHandler = () => {};
+  const submitHandler = () => {
+    localStorage.setItem("results", JSON.stringify(data))
+    navigate("/report");
+  };
 
   return (
     <div className={styles.questionPage}>
@@ -59,7 +63,14 @@ const QuestionPage = () => {
         )}
 
         <div className={styles.questionNavigation}>
-          <button onClick={prevHandler} className={styles.btnPrev}>
+          <button
+            onClick={prevHandler}
+            style={!Boolean(currentQuestionNumber) ? { cursor: "no-drop" } : {}}
+            className={`${styles.btnPrev} ${
+              !Boolean(currentQuestionNumber) ? styles.btnDisabled : ""
+            }`}
+            disabled={!Boolean(currentQuestionNumber)}
+          >
             Prev
           </button>
           {currentQuestionNumber === data?.length - 1 ? (
