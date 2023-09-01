@@ -1,0 +1,71 @@
+import React, { useEffect, useState } from "react";
+import styles from "./QuestionPage.module.scss";
+import { useParams } from "react-router";
+import { useGetQuestions } from "../../customHooks";
+import { useSelector } from "react-redux";
+
+const QuestionPage = () => {
+  const { Id, category } = useParams();
+  // eslint-disable-next-line no-unused-vars
+  const response = useGetQuestions({ category: Id });
+  const {
+    questionList: { data, isError, isLoading },
+  } = useSelector((state) => state.questionReducer);
+
+  const [currentQuestionNumber, setCurrentQuestionNumber] = useState(0);
+  const [currentQuestion, setCurrentQuestion] = useState(null);
+
+  console.log(currentQuestion);
+
+  useEffect(() => {
+    setCurrentQuestion(data[currentQuestionNumber]);
+  }, [currentQuestionNumber, data]);
+
+  const prevHandler = () => {
+   if(currentQuestionNumber > 0) setCurrentQuestionNumber((prev) => prev -1);
+  };
+
+  const nextHandler = () => {
+    setCurrentQuestionNumber((prev) => prev + 1);
+  };
+
+  const submitHandler = () => {};
+  return (
+    <div className={styles.questionPage}>
+      <div className={styles.left}>
+        {isLoading || !currentQuestion ? (
+          "loading"
+        ) : (
+          <div className={styles.currentQuestion}>
+            <h1 className={styles.label}>
+              {" "}
+              <span>Q{currentQuestionNumber + 1}.</span>{" "}
+              {currentQuestion?.question}
+            </h1>
+
+            <div className={styles.options}>
+              {currentQuestion?.options.map((option, i) => (
+                <label>
+                  <input type="radio" name="option" value={option} />
+                  <span>{option}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div className={styles.questionNavigation}>
+          <button onClick={prevHandler} className={styles.btnPrev}>Prev</button>
+          {currentQuestionNumber === data?.length - 1 ? (
+            <button onClick={submitHandler}>Submit</button>
+          ) : (
+            <button onClick={nextHandler}>Next</button>
+          )}
+        </div>
+      </div>
+      <div className={styles.right}></div>
+    </div>
+  );
+};
+
+export default QuestionPage;

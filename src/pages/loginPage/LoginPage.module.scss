@@ -3,7 +3,7 @@
 .loginPage {
   width: 100%;
   height: calc(100vh - 0px);
- 
+
   display: grid;
   grid-template-columns: 60% 40%;
 
@@ -24,48 +24,16 @@
     padding: 4rem;
     position: relative;
 
-    .loginForm{
-        margin: 2rem 0;
-
-        .inputField{
-            margin-bottom: 30px;
-            .formTitle{
-                font-size: 1.5rem;
-                margin-bottom: 10px;
-            }
-
-            .formDescription{
-                margin-bottom: 20px;
-            }
-
-            .input {
-                @include input;
-            }
-
-            .formFooter{
-                @include display-flex;
-                justify-content: flex-start;
-                .button {
-                    @include  primary-btn;
-                    @include display-center;
-                    gap: 10px;
-                    width: 200px;
-                }
-            }
-          
-        }
-    }
-
-    .footer{
+    .footer {
       position: absolute;
-       bottom: 50px;
+      bottom: 50px;
 
-       .socialIcons{
+      .socialIcons {
         @include icons;
         margin-left: 15px;
         cursor: pointer;
         color: $secondar-text;
-       }
+      }
     }
   }
 }
