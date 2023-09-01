@@ -14,7 +14,7 @@ const Options = ({ option, currentQuestion }) => {
     if (selectedOption) {
         console.log("pp")
       dispatch({
-        type: ACTIONS.GET_ATTENDE,
+        type: ACTIONS.GET_ATTENDED,
         payload: { questionId: currentQuestion.id, selectedOption },
       });
     }

@@ -20,7 +20,7 @@ export const questionReducer = (state = initialState, action) => {
         },
       };
 
-    case ACTIONS.GET_ATTENDE:
+    case ACTIONS.GET_ATTENDED:
       
       return {
         ...state,
