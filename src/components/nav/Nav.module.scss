@@ -1,0 +1,36 @@
+@import "../../styles/variable.module.scss";
+
+.nav {
+  border-bottom: 1px solid $border-color;
+  padding: 1rem 0;
+  @include flex-justify-between;
+
+  .navIcons {
+    color: $primary-color;
+    font-size: 1.4rem;
+  }
+
+  .navHeading {
+    font-size: 1.4rem;
+  }
+
+  .left {
+    .logo {
+      @include display-flex;
+      align-items: center;
+      gap: 10px;
+      .siteTitle {
+        font-weight: 800;
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .right {
+    .userInfo {
+      @include display-flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+}
