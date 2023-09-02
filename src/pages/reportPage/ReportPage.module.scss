@@ -27,12 +27,12 @@
       padding: 10px 13px;
       border-radius: 10px;
 
-      .footer{
+      .footer {
         margin-top: 10px;
 
-        p{
-          font-size: .9rem;
-          span{
+        p {
+          font-size: 0.9rem;
+          span {
             font-weight: 700;
           }
         }
@@ -43,5 +43,11 @@
   .right {
     width: 40%;
     border-left: 1px solid $border-color;
+
+    button {
+      @include primary-btn;
+      padding: 10px 12px;
+      margin-top: 15px;
+    }
   }
 }

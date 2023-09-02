@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Options, QuestionPanel } from "../../components";
 import { ACTIONS } from "../../redux/actions";
 import { zeroBeforeTen } from "../../utils/zeroBeforeTen";
+import CustomLoader from "../../components/loader/CustomLoader";
 
 const QuestionPage = ({ timerId }) => {
   const { Id, category } = useParams();
@@ -65,7 +66,15 @@ const QuestionPage = ({ timerId }) => {
     <div className={styles.questionPage}>
       <div className={styles.left}>
         {isLoading || !currentQuestion ? (
-          "loading"
+          <div className={styles.loaderWrapper}>
+            <CustomLoader
+              width={40}
+              height={40}
+              src={
+                "https://res.cloudinary.com/dhqxln7zi/image/upload/v1679836774/FormalBewitchedIsabellinewheatear-max-1mb.gif"
+              }
+            />
+          </div>
         ) : (
           <div className={styles.currentQuestion}>
             <h1 className={styles.label}>

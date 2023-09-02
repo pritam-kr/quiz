@@ -5,6 +5,7 @@ import * as FaIcons from "react-icons/fa";
 import { CIRCLE_INFO, SCORE_PER_QUESTION } from "./constants";
 import { useLocation } from "react-router";
 import { zeroBeforeTen } from "../../utils/zeroBeforeTen";
+import CustomLoader from "../loader/CustomLoader";
 
 const QuestionPanel = ({ questionNumber }) => {
   const {
@@ -21,7 +22,15 @@ const QuestionPanel = ({ questionNumber }) => {
   return (
     <div className={styles.panelWrapper}>
       {isLoading ? (
-        "loding"
+        <div className={styles.loaderWrapper}>
+          <CustomLoader
+            width={40}
+            height={40}
+            src={
+              "https://res.cloudinary.com/dhqxln7zi/image/upload/v1679836774/FormalBewitchedIsabellinewheatear-max-1mb.gif"
+            }
+          />
+        </div>
       ) : (
         <div className={styles.panel}>
           <div className={styles.pannelHeader}>
