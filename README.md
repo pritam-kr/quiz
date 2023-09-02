@@ -16,11 +16,11 @@
 
 ## Key Features
 
-- Users can do simple login using name and email.
-- Multiple choise question with timer feature
-- Users can see status for question attended, visited, and correct answer.
-- Playing history of attened quizs
-- Quizs on General knowladge, hisory and science
+- Users can do a simple login using their name and email.
+- Multiple choice questions with a timer feature
+- Users can see the status of questions attended, visited, and correct answers.
+- Playing history of attended quiz
+- Quizs on General knowledge, history, and science
 
 ## Getting Started
 
