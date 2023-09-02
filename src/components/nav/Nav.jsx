@@ -5,7 +5,7 @@ import Timer from "../timer/Timer";
 import { useLocation } from "react-router";
 import { useSelector } from "react-redux";
 
-const Nav = () => {
+const Nav = ({ timerId, setTimerId }) => {
   const user = JSON.parse(localStorage.getItem("userinfo"));
 
   const { pathname } = useLocation();
@@ -27,9 +27,14 @@ const Nav = () => {
       <div className={styles.right}>
         {data?.length > 0 &&
           pathname !== "/report" &&
-          pathname !== "/login" && pathname !== "/home" &&
+          pathname !== "/login" &&
+          pathname !== "/home" &&
           pathname !== "/" &&
-          (isLoading ? "load" : <Timer />)}
+          (isLoading ? (
+            "load"
+          ) : (
+            <Timer timerId={timerId} setTimerId={setTimerId} />
+          ))}
         <div className={styles.userInfo}>
           <FaIcons.FaUserCircle className={styles.navIcons} />
           <h1 className={styles.navHeading}>{user?.name ?? "Unknown user"}</h1>

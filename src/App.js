@@ -8,16 +8,20 @@ import {
   ReportPage,
   NotFoundPage,
 } from "./pages";
+import { useState } from "react";
 
 function App() {
   const { pathname } = useLocation();
   const user = JSON.parse(localStorage.getItem("userinfo"));
+  const [timerId, setTimerId] = useState(null);
+
   return (
     <>
       <PageContainer className={pathname === "/"}>
-        {pathname !== "/" && <NavBar />}
+        {pathname !== "/" && (
+          <NavBar timerId={timerId} setTimerId={setTimerId} />
+        )}
         <Routes>
-      
           <Route path="/" element={<LoginPage />} />
           <Route path="*" element={<NotFoundPage />} />
           {user?.name && user?.email ? (
@@ -25,7 +29,7 @@ function App() {
               <Route path="/home" element={<HomePage />} />
               <Route
                 path="/question/:Id/:category"
-                element={<QuestionPage />}
+                element={<QuestionPage timerId={timerId} />}
               />
               <Route path="/report" element={<ReportPage />} />
             </>

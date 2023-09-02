@@ -36,7 +36,43 @@ const HomePage = () => {
 
       <div className={styles.history}>
         <div className={styles.pageHeader}>
-          <h1 className={styles.title}>Game History</h1>
+          <h1 className={styles.title}>Playing history</h1>
+        </div>
+
+        <div className={styles.boardWrapper}>
+          {!JSON.parse(localStorage.getItem("board"))?.map(
+            (item) =>
+              item?.map((board) => ({
+                attended: item.length,
+                category: board.category,
+                type: board.type,
+              }))[0]
+          )?.length ? (
+            <p>You have not attended any Quiz</p>
+          ) : (
+            JSON.parse(localStorage.getItem("board"))
+              ?.map(
+                (item) =>
+                  item?.map((board) => ({
+                    attended: item.length,
+                    category: board.category,
+                    type: board.type,
+                  }))[0]
+              )
+              ?.map((item) => (
+                <div className={styles.board}>
+                  <li>
+                    <span>Question attended </span>: {item?.attended ?? 0}
+                  </li>
+                  <li>
+                    <span>Category</span> : {item?.category ?? ""}
+                  </li>
+                  <li>
+                    <span>Question Type</span>: {item?.type ?? ""}{" "}
+                  </li>
+                </div>
+              ))
+          )}
         </div>
       </div>
     </div>
