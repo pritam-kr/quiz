@@ -17,7 +17,7 @@ const Timer = ({ timerId, setTimerId }) => {
 
   useEffect(() => {
     let second = 60;
-    let minitue = 1;
+    let minitue = 30;
     let timerId;
     if (timerStart && minitue > 1) minitue = minitue - 1;
     timerId = setInterval(() => {
