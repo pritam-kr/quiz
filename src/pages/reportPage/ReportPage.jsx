@@ -2,9 +2,11 @@ import React from "react";
 import styles from "./ReportPage.module.scss";
 import { QuestionPanel } from "../../components";
 import { zeroBeforeTen } from "../../utils/zeroBeforeTen";
+import { useNavigate } from "react-router-dom";
 
 const ReportPage = () => {
   const questionData = JSON.parse(localStorage.getItem("results"));
+  const navigate = useNavigate();
 
   return (
     <div className={styles.report}>
@@ -36,6 +38,14 @@ const ReportPage = () => {
       </div>
       <div className={styles.right}>
         <QuestionPanel />
+
+        <button
+          onClick={() => {
+            navigate("/home");
+          }}
+        >
+          Go back to Home
+        </button>
       </div>
     </div>
   );

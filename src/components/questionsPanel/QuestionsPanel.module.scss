@@ -6,6 +6,18 @@
   background-color: $white;
   border-radius: 10px;
   padding: 10px;
+  min-height: 350px;
+  position: relative;
+
+  .loaderWrapper {
+    @include display-center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+  }
 
   .panel {
     .pannelHeader {
@@ -32,23 +44,23 @@
           background-color: #fffd8cce;
         }
 
-        &.isAttended{
+        &.isAttended {
           background-color: $primary-color !important;
         }
       }
     }
 
-    .circleDetails{
+    .circleDetails {
       margin: 15px 0 0 0;
 
-      p{
+      p {
         @include display-flex;
         align-items: center;
         gap: 10px;
-        font-size: .9rem;
+        font-size: 0.9rem;
         color: $secondar-text;
 
-        svg{
+        svg {
           border: 1px solid $border-color;
           border-radius: 20px;
         }

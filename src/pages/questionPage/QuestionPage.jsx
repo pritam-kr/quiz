@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Options, QuestionPanel } from "../../components";
 import { ACTIONS } from "../../redux/actions";
 import { zeroBeforeTen } from "../../utils/zeroBeforeTen";
+import CustomLoader from "../../components/loader/CustomLoader";
+import { getPlayingHistory } from "../../utils/getPlayingHistory";
 
 const QuestionPage = ({ timerId }) => {
   const { Id, category } = useParams();
@@ -37,26 +39,9 @@ const QuestionPage = ({ timerId }) => {
     setCurrentQuestionNumber((prev) => prev + 1);
   };
 
-  const findLeaderBoard = (data) => {
-    if (!localStorage.getItem("board")) {
-      localStorage.setItem(
-        "board",
-        JSON.stringify([data.filter((item) => item.isAttended.length)])
-      );
-    } else {
-      localStorage.setItem(
-        "board",
-        JSON.stringify([
-          ...JSON.parse(localStorage.getItem("board")),
-          data.filter((item) => item.isAttended.length),
-        ])
-      );
-    }
-  };
-
   const submitHandler = (data) => {
     localStorage.setItem("results", JSON.stringify(data));
-    findLeaderBoard(data);
+    getPlayingHistory(data);
     clearInterval(timerId);
     navigate("/report");
   };
@@ -65,7 +50,15 @@ const QuestionPage = ({ timerId }) => {
     <div className={styles.questionPage}>
       <div className={styles.left}>
         {isLoading || !currentQuestion ? (
-          "loading"
+          <div className={styles.loaderWrapper}>
+            <CustomLoader
+              width={40}
+              height={40}
+              src={
+                "https://res.cloudinary.com/dhqxln7zi/image/upload/v1679836774/FormalBewitchedIsabellinewheatear-max-1mb.gif"
+              }
+            />
+          </div>
         ) : (
           <div className={styles.currentQuestion}>
             <h1 className={styles.label}>

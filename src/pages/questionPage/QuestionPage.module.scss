@@ -9,16 +9,19 @@
 
   .left,
   .right {
-    // border: 1px solid;
     padding: 0 10px;
   }
 
   .left {
     width: 60%;
-    // width: ;
-
+    min-height: 350px;
     border-right: 1px solid $border-color;
     position: relative;
+
+    .loaderWrapper{
+      @include display-center;
+      margin-top: 20px;
+    }
 
     .currentQuestion {
       .label {
