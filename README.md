@@ -50,4 +50,4 @@ Follow these steps to run Quizify on your machine:
 ![Home](./public/report.png)
 
 # Contact
-If you have any questions or suggestions, please feel free to reach out to us at pritamvr9@gmail.com
+If you have any questions or suggestions, please feel free to reach out to me at pritamvr9@gmail.com
