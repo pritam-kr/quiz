@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./ReportPage.module.scss";
 import { QuestionPanel } from "../../components";
+import { zeroBeforeTen } from "../../utils/zeroBeforeTen";
 
 const ReportPage = () => {
   const questionData = JSON.parse(localStorage.getItem("results"));
@@ -9,10 +10,17 @@ const ReportPage = () => {
     <div className={styles.report}>
       <div className={styles.left}>
         {questionData?.map((item, i) => (
-          <div className={styles.question}>
+          <div
+            className={styles.question}
+            style={
+              item.correct_answer === item.isAttended?.join()
+                ? { backgroundColor: "rgb(87 197 87 / 49%)" }
+                : {}
+            }
+          >
             <h1>
               {" "}
-              <span>Q{i + 1}. </span> {item.question}
+              <span>Q {zeroBeforeTen(i + 1)}. </span> {item.question}
             </h1>
             <div className={styles.footer}>
               <p>
@@ -20,9 +28,7 @@ const ReportPage = () => {
               </p>{" "}
               <p>
                 <span>Selected option</span>:{" "}
-                {item.isAttended?.length
-                  ? item.isAttended?.join()
-                  : ""}
+                {item.isAttended?.length ? item.isAttended?.join() : ""}
               </p>
             </div>
           </div>

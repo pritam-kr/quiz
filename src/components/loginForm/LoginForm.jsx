@@ -2,35 +2,35 @@ import React from "react";
 import styles from "./LoginForm.module.scss";
 import * as FaIcons from "react-icons/fa";
 
-const LoginForm = ({ input, setInput, loginHandler }) => {
+const LoginForm = ({ input, setInput, loginHandler, error, setError }) => {
   return (
     <div className={styles.loginForm}>
       <div className={styles.inputField}>
         <h1 className={styles.formTitle}>Welcome to Play Quiz</h1>
         <p className={styles.formDescription}>
-          In publishing and graphic design, Lorem ipsum is a placeholder text
-          commonly used to demonstrate the visual form of a document or a
-          typeface without relying on meaningful content.{" "}
+          It's an app where you can play lots of fun quizzes. It doesn't matter
+          if you're a quiz pro or just looking to have some fun.{" "}
         </p>
       </div>
-
+      <p className={styles.error}>{error}</p>
       <div className={styles.inputField}>
         <input
           className={styles.input}
-          placeholder="enter your name"
-            onChange={(e) =>
-              setInput((prev) => ({ ...prev, name: e.target.value }))
-            }
+          placeholder="Enter your full name"
+          onChange={(e) =>
+            setInput((prev) => ({ ...prev, name: e.target.value }))
+          }
         />
       </div>
       <div className={styles.inputField}>
         <input
           className={styles.input}
-          placeholder="enter your email"
+          placeholder="Enter your email"
           type="email"
-            onChange={(e) =>
-              setInput((prev) => ({ ...prev, email: e.target.value }))
-            }
+          required
+          onChange={(e) =>
+            setInput((prev) => ({ ...prev, email: e.target.value }))
+          }
         />
       </div>
 

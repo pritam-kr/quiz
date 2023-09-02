@@ -5,8 +5,9 @@ import { useGetQuestions } from "../../customHooks";
 import { useDispatch, useSelector } from "react-redux";
 import { Options, QuestionPanel } from "../../components";
 import { ACTIONS } from "../../redux/actions";
+import { zeroBeforeTen } from "../../utils/zeroBeforeTen";
 
-const QuestionPage = () => {
+const QuestionPage = ({ timerId }) => {
   const { Id, category } = useParams();
   // eslint-disable-next-line no-unused-vars
   const response = useGetQuestions({ category: Id });
@@ -36,8 +37,27 @@ const QuestionPage = () => {
     setCurrentQuestionNumber((prev) => prev + 1);
   };
 
-  const submitHandler = () => {
-    localStorage.setItem("results", JSON.stringify(data))
+  const findLeaderBoard = (data) => {
+    if (!localStorage.getItem("board")) {
+      localStorage.setItem(
+        "board",
+        JSON.stringify([data.filter((item) => item.isAttended.length)])
+      );
+    } else {
+      localStorage.setItem(
+        "board",
+        JSON.stringify([
+          ...JSON.parse(localStorage.getItem("board")),
+          data.filter((item) => item.isAttended.length),
+        ])
+      );
+    }
+  };
+
+  const submitHandler = (data) => {
+    localStorage.setItem("results", JSON.stringify(data));
+    findLeaderBoard(data);
+    clearInterval(timerId);
     navigate("/report");
   };
 
@@ -50,7 +70,7 @@ const QuestionPage = () => {
           <div className={styles.currentQuestion}>
             <h1 className={styles.label}>
               {" "}
-              <span>Q{currentQuestionNumber + 1}.</span>{" "}
+              <span>Q {zeroBeforeTen(currentQuestionNumber + 1)}.</span>{" "}
               {currentQuestion?.question}
             </h1>
 
@@ -74,7 +94,7 @@ const QuestionPage = () => {
             Prev
           </button>
           {currentQuestionNumber === data?.length - 1 ? (
-            <button onClick={submitHandler}>Submit</button>
+            <button onClick={() => submitHandler(data)}>Submit</button>
           ) : (
             <button onClick={() => nextHandler(currentQuestionNumber + 1)}>
               Next
