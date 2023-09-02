@@ -39,7 +39,13 @@ const ReportPage = () => {
       <div className={styles.right}>
         <QuestionPanel />
 
-        <button onClick={() => navigate("/home")}>Go back to Home</button>
+        <button
+          onClick={() => {
+            navigate("/home");
+          }}
+        >
+          Go back to Home
+        </button>
       </div>
     </div>
   );

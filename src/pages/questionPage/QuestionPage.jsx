@@ -7,6 +7,7 @@ import { Options, QuestionPanel } from "../../components";
 import { ACTIONS } from "../../redux/actions";
 import { zeroBeforeTen } from "../../utils/zeroBeforeTen";
 import CustomLoader from "../../components/loader/CustomLoader";
+import { getPlayingHistory } from "../../utils/getPlayingHistory";
 
 const QuestionPage = ({ timerId }) => {
   const { Id, category } = useParams();
@@ -38,26 +39,9 @@ const QuestionPage = ({ timerId }) => {
     setCurrentQuestionNumber((prev) => prev + 1);
   };
 
-  const findLeaderBoard = (data) => {
-    if (!localStorage.getItem("board")) {
-      localStorage.setItem(
-        "board",
-        JSON.stringify([data.filter((item) => item.isAttended.length)])
-      );
-    } else {
-      localStorage.setItem(
-        "board",
-        JSON.stringify([
-          ...JSON.parse(localStorage.getItem("board")),
-          data.filter((item) => item.isAttended.length),
-        ])
-      );
-    }
-  };
-
   const submitHandler = (data) => {
     localStorage.setItem("results", JSON.stringify(data));
-    findLeaderBoard(data);
+    getPlayingHistory(data);
     clearInterval(timerId);
     navigate("/report");
   };
