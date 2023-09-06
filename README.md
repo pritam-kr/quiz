@@ -6,8 +6,6 @@
 
 [Link](https://excalidraw.com/#json=ZBLID5QATKE6gaVJLCrzO,GXb5_UwkmvuEyekDCWjqAg)
 
-![UI](./public/png.png)
-
 ## Tech stack
 
 - ReactJs
@@ -30,24 +28,6 @@ Follow these steps to run Quizify on your machine:
 - Install dependencies: npm install
 - Start the development server: npm start
 - Open your web browser and go to http://localhost:3000 to access the website.
-
-## Pages
-
-### Login
-
-![Home](./public/login.png)
-
-### Home
-
-![Home](./public/home.png)
-
-### Question
-
-![Home](./public/question.png)
-
-### Report
-
-![Home](./public/report.png)
-
+ 
 # Contact
 If you have any questions or suggestions, please feel free to reach out to me at pritamvr9@gmail.com
