@@ -32,9 +32,7 @@ const Nav = ({ timerId, setTimerId }) => {
           pathname !== "/" &&
           (isLoading ? (
             "load"
-          ) : (
-            <Timer timerId={timerId} setTimerId={setTimerId} />
-          ))}
+          ) :  null)}
         <div className={styles.userInfo}>
           <FaIcons.FaUserCircle className={styles.navIcons} />
           <h1 className={styles.navHeading}>{user?.name ?? "Unknown user"}</h1>
