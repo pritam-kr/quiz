@@ -15,9 +15,7 @@
 ## Key Features
 
 - Users can do a simple login using their name and email.
-- Multiple choice questions with a timer feature
 - Users can see the status of questions attended, visited, and correct answers.
-- Playing history of attended quiz
 - Quizs on General knowledge, history, and science
 
 ## Getting Started
